@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
     <header class="">
         <nav class="w-11/12 mx-auto flex justify-between py-2 items-center border-b">
             <div id="logo">
@@ -24,6 +25,7 @@
         <section id="category" class="flex justify-center gap-2">
         </section>
     </header>
+
     <main>
         <section id="videos" class="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 py-10 gap-5">
             <!-- <div>
@@ -32,8 +34,21 @@
         </section>
     </main>
 
-    <script src="script/button.js"></script>
-    <script src="script/videos.js"></script>
+    <!-- Open the modal using ID.showModal() method -->
+    <button id="modalButton" class="btn hidden" onclick="my_modal_1.showModal()">open modal</button>
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box">
+            <div id="modalContent"></div>
+            <div class="modal-action">
+                <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="script/video.js"></script>
 </body>
 
 </html>

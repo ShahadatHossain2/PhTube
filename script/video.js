@@ -23,8 +23,27 @@ const categoryVideos = async (id) => {
     // })
     const res = await fetch(`https://openapi.programming-hero.com/api/phero-tube/category/${id}`)
     const data = await res.json()
-    document.getElementById("btn-"+id).classList.add("active")
+    document.getElementById("btn-" + id).classList.add("active")
     displayVideos(data.category)
+}
+
+const loadDetails = async (videoId) => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/phero-tube/video/${videoId}`)
+    const data = await res.json()
+    showVideoDetails(data.video)
+}
+
+const showVideoDetails = (details) => {
+    const contentBox = document.getElementById('modalContent')
+    contentBox.innerHTML = `
+    <img class="h-full w-full rounded" src=${details.thumbnail} alt="">
+    <p> ${details.description} </p>
+    `
+
+    // way - 1
+    // document.getElementById('modalButton').onclick()
+    // way - 2
+    document.getElementById('my_modal_1').showModal()
 }
 
 function displayCategory(categories) {
@@ -38,7 +57,7 @@ function displayCategory(categories) {
         `
         document.getElementById('category').append(btnContainer)
     });
-    
+
 }
 
 const loadVideos = async () => {
@@ -50,15 +69,16 @@ const loadVideos = async () => {
 const getTime = (time) => {
     const hour = parseInt(time / 3600);
     const min = parseInt((time % 3600) / 60);
-    return hour +"hrs " + min +" min ago";
+    return hour + "hrs " + min + " min ago";
 }
 
 function displayVideos(videos) {
     const container = document.getElementById('videos')
     container.innerHTML = ""
-    if(videos.length == 0) {
-    container.classList.remove("grid")
-      return container.innerHTML = `
+    if (videos.length == 0) {
+        console.log("Gelo")
+        container.classList.remove("grid")
+        return container.innerHTML = `
       <div class="w-2/12 mx-auto mt-10">
         <img src="/resource/icon.png" alt="">
         <h2>
@@ -68,7 +88,7 @@ function displayVideos(videos) {
       `
     }
     else {
-        container.classList.add("gird")
+        container.classList.add("grid")
     }
     videos.forEach(video => {
         const div = document.createElement('div')
@@ -91,6 +111,8 @@ function displayVideos(videos) {
                     
                 </div>
                 <p class="text-gray-400">${video.others.views} </p>
+                <span><button class="btn btn-sm btn-error" onClick = "loadDetails('${video.video_id}')" class="btn category-btn">details
+        </button></span>
                 
             </div>
             
