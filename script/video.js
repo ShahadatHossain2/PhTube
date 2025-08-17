@@ -90,7 +90,7 @@ function displayVideos(videos) {
         container.classList.remove("grid")
         return container.innerHTML = `
       <div class="w-2/12 mx-auto mt-10">
-        <img src="/resource/icon.png" alt="">
+        <img src="resource/icon.png" alt="">
         <h2>
         No Content in this Category
         </h2>
