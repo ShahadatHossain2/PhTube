@@ -67,8 +67,12 @@ const loadVideos = async (videoTitle = "") => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${videoTitle}`)
     const data = await res.json()
     displayVideos(data.videos)
+    document.getElementById("logoImg").style.cursor = "pointer"
     document.getElementById("sortButton").addEventListener('click', ()=>{
        sortByView(data.videos) 
+    })
+    document.getElementById("logoImg").addEventListener('click', ()=>{
+           displayVideos(data.videos)
     })
 }
 
