@@ -107,7 +107,7 @@ function displayVideos(videos) {
             ` 
          <figure class="h-[200px] relative">
             <img class="h-full w-full object-cover" src=${video.thumbnail} alt="">
-            ${video.others.posted_date.length == 0 ? "" : `<span class="absolute text-white right-2 bottom-2 rounded p-1 bg-black">${video.others.posted_date}</span>`}
+            ${video.others.posted_date.length == 0 ? "" : `<span class="absolute text-white right-2 bottom-2 rounded p-1 bg-black">${getTime(video.others.posted_date)}</span>`}
         </figure>
         <div class="px-0 py-2 flex gap-2">
             <div class="">
