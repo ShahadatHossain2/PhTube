@@ -25,6 +25,9 @@ const categoryVideos = async (id) => {
     const data = await res.json()
     document.getElementById("btn-" + id).classList.add("active")
     displayVideos(data.category)
+    document.getElementById("sortButton").addEventListener('click', ()=>{
+       sortByView(data.category) 
+    })
 }
 
 const loadDetails = async (videoId) => {
@@ -60,10 +63,13 @@ function displayCategory(categories) {
 
 }
 
-const loadVideos = async () => {
-    const res = await fetch('https://openapi.programming-hero.com/api/phero-tube/videos')
+const loadVideos = async (videoTitle = "") => {
+    const res = await fetch(`https://openapi.programming-hero.com/api/phero-tube/videos?title=${videoTitle}`)
     const data = await res.json()
     displayVideos(data.videos)
+    document.getElementById("sortButton").addEventListener('click', ()=>{
+       sortByView(data.videos) 
+    })
 }
 
 const getTime = (time) => {
@@ -123,7 +129,18 @@ function displayVideos(videos) {
     });
 }
 
+document.getElementById('searchVideo').addEventListener('keyup', (event) => {
+    const inputValue = event.target.value;
+    loadVideos(inputValue)
+})
+
+const sortByView = (videos) => {
+    
+    videos.sort((a, b) =>
+        b.others.views.split("K")[0] - a.others.views.split("K")[0]
+    )
+     displayVideos(videos)
+}
 
 loadVideos()
-
 loadCategory()
