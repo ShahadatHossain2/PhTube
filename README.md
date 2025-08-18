@@ -3,7 +3,7 @@ PhTube 🎥
 
 PhTube is a video browsing web app built with JavaScript, DaisyUI, and HTML, where video data is fetched from a ready-made API. The app allows users to explore videos by categories, search content, and sort by popularity.
 
-🔗 PhTube Live - https://shahadathossain2.github.io/PhTube/
+🔗 PhTube Live - https://shahadat-ph-tube.netlify.app/
 
 
 ✨ Features
